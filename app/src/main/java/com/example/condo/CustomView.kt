@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.bumptech.glide.Glide
+import coil.load
 
 class CustomView @JvmOverloads constructor(
     context: Context,
@@ -14,20 +14,25 @@ class CustomView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ): LinearLayout(context, attrs, defStyleAttr) {
 
+    private var viewCard:ImageView? = null
+    private var txtName:TextView? = null
+    private var descriptionCard:TextView? = null
+    private var condoUnit: CondoUnit? = null
+    private var idCard: TextView? = null
+
     init {
         LayoutInflater.from(context).inflate(R.layout.activity_condo_card, this, true)
+        viewCard = findViewById(R.id.viewCard)
+        txtName = findViewById(R.id.txtNameCard)
+        descriptionCard = findViewById(R.id.txtDescriptionCard)
+        idCard = findViewById<TextView>(R.id.idCard)
     }
 
     fun setData(unitCard: CondoUnit){
-        val txtName = findViewById<TextView>(R.id.txtNameCard)
-        val descriptionCard = findViewById<TextView>(R.id.txtDescriptionCard)
-        val idCard = findViewById<TextView>(R.id.idCard)
-        val viewCard = findViewById<ImageView>(R.id.viewCard)
-
-        txtName.text = unitCard.nomeUnidade
-        descriptionCard.text = unitCard.descricao
-        idCard.text = unitCard.id.toString()
-        Glide.with(context).load(unitCard.url).into(viewCard)
+        txtName?.text = unitCard.nomeUnidade
+        descriptionCard?.text = unitCard.descricao
+        idCard?.text = unitCard.id.toString()
+        viewCard?.load(condoUnit?.url)
     }
 
 }
