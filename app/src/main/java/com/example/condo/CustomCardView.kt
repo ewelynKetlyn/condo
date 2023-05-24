@@ -9,7 +9,7 @@ import android.widget.TextView
 import coil.load
 import com.example.condo.data.CondoUnit
 
-class UnitCardView @JvmOverloads constructor(
+class CustomCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
