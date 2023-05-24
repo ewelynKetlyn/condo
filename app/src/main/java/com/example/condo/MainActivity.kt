@@ -2,23 +2,32 @@ package com.example.condo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
-private lateinit var customView: CustomView
-
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
+import com.example.condo.adapter.CondoAdapter
+import com.example.condo.data.CondoUnit
+import com.example.condo.vielmodel.MainViewModel
 class MainActivity : AppCompatActivity() {
+
+    private var unitCardView: UnitCardView? = null
+    private var mainViewlModel: MainViewModel? = null
+    private var unitiesListRV: RecyclerView? = null
+    private var unitisAdapter: CondoAdapter = CondoAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        customView = findViewById(R.id.condoUnitView)
+        mainViewlModel = ViewModelProvider(this)[MainViewModel::class.java]
+        unitiesListRV = findViewById(R.id.unitesList)
 
-        val condoUnit = CondoUnit(
-            id = 1,
-            nomeUnidade = "Praia",
-            descricao = "Perto da praia",
-            url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn83acqxCQfqPl7KnVL9AZU9dbG6vGzecr1g&usqp=CAU"
-        )
+        setViews()
 
-        customView.setData(condoUnit)
+    }
+    private fun setViews(){
+        setUpAdapter(mainViewlModel?.unitiesList.orEmpty())
+    }
+    private fun setUpAdapter(unitiesList:List<CondoUnit>){
+        unitiesListRV?.adapter = unitisAdapter
+        unitisAdapter.setUnites(unitiesList)
     }
 }

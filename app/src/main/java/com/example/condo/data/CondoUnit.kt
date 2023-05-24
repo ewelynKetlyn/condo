@@ -1,4 +1,4 @@
-package com.example.condo
+package com.example.condo.data
 
 data class CondoUnit(
     val id: Int,

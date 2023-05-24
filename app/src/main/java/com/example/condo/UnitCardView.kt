@@ -7,8 +7,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import coil.load
+import com.example.condo.data.CondoUnit
 
-class CustomView @JvmOverloads constructor(
+class UnitCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -25,7 +26,7 @@ class CustomView @JvmOverloads constructor(
         viewCard = findViewById(R.id.viewCard)
         txtName = findViewById(R.id.txtNameCard)
         descriptionCard = findViewById(R.id.txtDescriptionCard)
-        idCard = findViewById<TextView>(R.id.idCard)
+        idCard = findViewById(R.id.idCard)
     }
 
     fun setData(unitCard: CondoUnit){
