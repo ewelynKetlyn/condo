@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         setViews()
 
     }
-
     private fun setViews() {
         setUpAdapter(mainViewlModel?.unitiesList.orEmpty())
         searchBar?.newInstance { newQuery ->

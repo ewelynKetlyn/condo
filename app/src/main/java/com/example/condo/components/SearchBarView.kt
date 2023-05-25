@@ -13,24 +13,24 @@ class SearchBarView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-): LinearLayout(context, attrs, defStyleAttr){
+) : LinearLayout(context, attrs, defStyleAttr) {
     private var searchEditText: EditText? = null
-    private var searchIconBotton: ImageButton? = null
+    private var searchImageButton: ImageButton? = null
     private var onQueryChanged: ((String) -> Unit)? = null
 
     init {
         LayoutInflater.from(context).inflate(R.layout.activity_search_bar_view, this, false)
         searchEditText = findViewById(R.id.searchEditText)
-        searchIconBotton = findViewById(R.id.searchIconBotton)
+        searchImageButton = findViewById(R.id.searchIconBotton)
     }
 
-    fun newInstance(onQueryChanged: (String) -> Unit){
+    fun newInstance(onQueryChanged: (String) -> Unit) {
         this.onQueryChanged = onQueryChanged
         setUpViews()
     }
 
-    private fun setUpViews(){
-        searchEditText?.addTextChangedListener{text ->
+    private fun setUpViews() {
+        searchEditText?.addTextChangedListener { text ->
             onQueryChanged?.invoke(text.toString())
         }
     }
